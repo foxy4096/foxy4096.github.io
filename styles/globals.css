@@ -1,26 +1,37 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-image: url('https://images.pexels.com/photos/3109850/pexels-photo-3109850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    @apply backdrop-blur-3xl h-full;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.btn-primary{
+    @apply bg-sky-500
+    text-gray-100 
+    px-3 
+    py-3 
+    font-bold 
+    text-xl 
+    drop-shadow
+    rounded-lg
+    hover:bg-sky-600
+    active:bg-sky-700
 }
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.btn-secondary{
+    @apply bg-slate-700
+    text-white 
+    px-3 
+    py-3 
+    font-bold 
+    text-xl 
+    drop-shadow
+    rounded-lg
+    hover:bg-slate-800
+    active:bg-slate-900
 }
