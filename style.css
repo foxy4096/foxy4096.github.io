@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+
+/* Removing all default styles */
+html {
+  all: unset;
+  scroll-behavior: smooth;
+}
+
+.dark {
+  background-color: rgb(22, 26, 39);
+  color: white;
+}
+
+a {
+  color: rgb(68, 173, 68);
+  text-decoration: none;
+  border-bottom: 1px dashed;
+}
+
+main {
+  text-align: center;
+}
+
+header > ul {
+  cursor: pointer;
+}
+
+.container {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 2rem;
+}
+
+/* Setting some fonts and margin and padding */
+body {
+  font-family: "Inconsolata", monospace;
+}
+
+.box {
+  text-align: center;
+  border: 1px solid black;
+  /* padding: 4px; */
+  width: 400px;
+}
+
+.button {
+  all: unset;
+  color: aliceblue;
+  background: rgb(91, 74, 167);
+  padding: 10px 20px 10px 20px;
+  /* margin-top: 5px; */
+  /* margin-left: 20px; */
+  cursor: pointer;
+  /* margin-right: 20px; */
+}
+
+.button.hover_green:hover {
+  background: rgb(79, 65, 139);
+  box-shadow: 10px 10px rgb(72, 255, 0);
+}
+.button.hover_orange:hover {
+  background: rgb(79, 65, 139);
+  box-shadow: 10px 10px rgb(255, 166, 0);
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-end;
+}
+.flex-no-center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+  align-content: flex-start;
+  justify-content: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1px;
+  row-gap: 10px;
+}
+
+.profile-img {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.jolly {
+  color: rgb(0, 0, 0);
+  animation: jolly 5s linear infinite;
+}
+
+@keyframes jolly {
+  0% {
+    color: #5c7cfa;
+  }
+  50% {
+    color: #52966e;
+  }
+  75% {
+    color: #fa8e5c;
+  }
+  100% {
+    color: #5c7cfa;
+  }
+}
+
+input {
+  padding: 10px;
+  all: unset;
+  border-bottom: 2px solid #52966e;
+}

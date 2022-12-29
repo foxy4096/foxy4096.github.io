@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+
+    <script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <link rel="shortcut icon" href="images/profile.png" type="image/x-icon">
+    <title>Home • Aditya Priyadarshi</title>
+</head>
+
+<body hx-boost="true" id="body">
+    <header class="flex">
+        <ul><strong>~/home</strong></ul>
+        <ul><a href="/blog">~/blog</a></ul>
+        <ul><a href="/contact">~/contact</a></ul>
+    </header>
+    <hr>
+    <main>
+        <section>
+            <div class="container">
+                <div class="flex">
+                    <figure>
+                        <img src="https://github.com/foxy4096.png" alt="" class="profile-img" width="90"
+                            alt="Profile Picture">
+                    </figure>
+                    <h1>Hello! I am <span class="jolly" title="Aditya Priyadarshi">Aditya</span>
+                    </h1>
+                </div>
+                <small>aka <a href="https://github.com/foxy4096" target="_blank">@foxy4096</a> 🦊</small>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="#about" class="button hover_orange">About Me</a>
+                <a href="#work" class="button hover_green">My Work</a>
+                <br>
+                <br>
+            </div>
+        </section>
+    </main>
+    <hr>
+    <section id="about">
+        <div class="container">
+            <h4>About Me <a href="#about">🔗</a></h4>
+            <p class="content">
+                Hello, I am a Dumb Web Developer Who Loves Django.
+                I am also a high school student, who makes stuff with <code>django</code>, or at least try to 😓.
+                <br>
+                Well nothing too fancy, I am currently learning <code>Rust 🦀</code>.
+                <br>
+                <br>
+                I also know <code>HTML 📄</code>, <code>Python 🐍</code>, <code>Javascript 🌎</code>, little bit
+                <code>CSS ✨</code>, <code>Java 💀</code>, <code>C# 🎮</code>.
+                <br>
+                <small title="Yes it's sucks very much">Not gonna lie <code>java</code> sucks</small>
+                <br>
+                <br>
+                I currently work at <a href="https://ripledd.com/center/" target="_blank">@Ripledd</a> and at <a
+                    href="https://visualway.xyz" target="_blank">@Visualway</a>.
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section id="work">
+        <div class="container">
+            <h4>My Work <a href="#work">🔗</a></h4>
+            Well here are some on my projects that I have made.
+            <br>
+            <br>
+            <div class="flex-no-center">
+                <div class="box">
+                    <h4><a href="https://bit.ly/vitary">Vitary</a></h4>
+                    <p>🌟 A social media made with Django, Bulma and jQuery. 🎉</p>
+                </div>
+                <div class="box">
+                    <h4><a href="https://github.com/foxy4096/DjangoPolls">Django Polls</a></h4>
+                    <p>A simple polling app made in Django and Bootstrap</p>
+                </div>
+                <div class="box">
+                    <h4><a href="https://github.com/foxy4096/Musify">Musify</a></h4>
+                    <p>A kind of spotify clone made with django.</p>
+                </div>
+                <div class="box">
+                    <h4><a href="https://github.com/foxy4096/Ripledd-Python">ripledd-python</a></h4>
+                    <p>A simple API wrapper made for Ripledd.
+                    </p>
+                </div>
+                <div class="box">
+                    <h4><a href="https://github.com/foxy4096/Interiorshop">Interiorshop</a></h4>
+                    <p>A simple E-commerce shop made with Django and Bulma</p>
+                </div>
+                <div class="box">
+                    <h4><a href="https://github.com/foxy4096/ProJIT">ProJIT</a></h4>
+                    <p>Just some of my projects I made for fun</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div class="container" style="text-align: center;">
+            <img src="https://media.tenor.com/GdszahADoMYAAAAM/happy-new-year-eve-happy-new-year2021.gif" alt="HNY2023">
+        </div>
+    </section>
+
+    <footer>
+        <a href="#">Go to top 👆</a>
+        <br>
+        <br>
+        I have made this site with pure HTML, CSS and Javascript 😌
+        <br>
+        <br>
+
+        Copyright ©
+
+        <span x-text="new Date().getFullYear()"></span>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
