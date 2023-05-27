@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 
+
 /* Removing all default styles */
 html {
   all: unset;
@@ -7,14 +8,15 @@ html {
 }
 
 body {
-  background-color: rgb(17, 17, 24);
-  color: white;
+  background-color: #121112;
+  color: #ffffff;
 }
 
 a {
-  color: rgb(68, 173, 68);
+  color: #38b27d;
   text-decoration: none;
   border-bottom: 1px dashed;
+  font-weight: bold;
 }
 
 main {
@@ -44,43 +46,62 @@ body {
 .box {
   text-align: center;
   border: 3px solid rgb(219, 219, 219);
-  /* padding: 4px; */
+  padding: 9px;
   width: 400px;
-  /* border-radius: 5px; */
-  transition: border ease-in-out 2s;
+  height: 200px;
+  border-radius: 20px;
+  /* transition: all ease-in 0.9s; */
+  position: relative;
+  /* box-shadow: 0px 0px 20px 3px rgb(0, 0, 0); */
 }
-.box:hover {
-  text-align: center;
-  /* border: 3px solid rgb(55, 52, 236); */
-  background: rgb(22, 22, 22);
-  /* padding: 4px; */
-  animation: jolly 5s linear infinite;
-  /* border-width: 4px; */
-  border-style: solid;
-  border-image: linear-gradient(to right, rgb(97, 97, 173), rgb(50, 204, 101)) 1;
-  /* border-radius: 9px; */
+/* .box:hover {
+  border: 3px solid rgb(255, 112, 155);
+  transition: all ease-in-out 0.9s;
+  box-shadow: 0px 0px 20px 3px rgb(255, 112, 155);
+  animation: jolly-box 3s linear infinite;
   
-}
+} */
 
 .button {
   all: unset;
   color: aliceblue;
-  background: rgb(91, 74, 167);
-  padding: 10px 20px 10px 20px;
-  /* margin-top: 5px; */
-  /* margin-left: 20px; */
+  background: #38b27d;
+  padding: 1em 2em;
+  /* box-shadow: 0px 0px 20px 3px rgb(0, 0, 0); */
+  margin-top: 5px;
+  margin-left: 20px;
+  font-size: 18px;
+  display: inline-block;
   cursor: pointer;
-  /* margin-right: 20px; */
+  margin-right: 20px;
   transition: all ease-in 0.1s;
+  transition: transform ease 0.2s, box-shadow ease 0.2s;
+  border-radius: 6px;
+}
+.secondary{
+  all: unset;
+  color: aliceblue;
+  background: #080708;
+  padding: 1em 2em;
+  /* box-shadow: 0px 0px 20px 3px rgb(0, 0, 0); */
+  margin-top: 5px;
+  margin-left: 20px;
+  font-size: 18px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: all ease-in 0.1s;
+  transition: transform ease 0.2s, box-shadow ease 0.2s;
+  border-radius: 6px;
 }
 
-.button.hover_green:hover {
-  background: rgb(79, 65, 139);
-  box-shadow: 10px 10px rgb(72, 255, 0);
+.secondary.hover_green:hover {
+  transform: translate(0, -3px);
 }
 .button.hover_orange:hover {
-  background: rgb(79, 65, 139);
-  box-shadow: 10px 10px rgb(255, 166, 0);
+  transform: translate(0, -3px);
+  background: #38b27d;
+  box-shadow: 0px 0px 30px 2px #38b27d;
 }
 
 .flex {
@@ -96,7 +117,7 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: stretch;
-  gap: 10px;
+  gap: 20px;
   align-content: flex-start;
   justify-content: center;
 }
@@ -109,7 +130,8 @@ body {
 
 .profile-img {
   height: 100%;
-  border-radius: 50%;
+  border-radius: 10px;
+  border: 3px solid #38b27d;
 }
 
 .jolly {
@@ -129,6 +151,24 @@ body {
   }
   100% {
     color: #5c7cfa;
+  }
+}
+@keyframes jolly-box {
+  0% {
+    border-color: #5c7cfa;
+    box-shadow: 0px 0px 20px 3px #5c7cfa;
+  }
+  50% {
+    border-color: #52966e;
+    box-shadow: 0px 0px 20px 3px #52966e;
+  }
+  75% {
+    border-color: #fa8e5c;
+    box-shadow: 0px 0px 20px 3px #fa8e5c;
+  }
+  100% {
+    border-color: #5c7cfa;
+    box-shadow: 0px 0px 20px 3px #5c7cfa;
   }
 }
 
