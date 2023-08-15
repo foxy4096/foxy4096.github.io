@@ -35,8 +35,7 @@ header > ul {
 }
 
 .container {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding: 10px;
 }
 
 h1 {
