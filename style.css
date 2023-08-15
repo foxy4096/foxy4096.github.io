@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 html {
   all: unset;
@@ -22,6 +23,7 @@ a {
   text-decoration: none;
   border-bottom: 1px dashed;
   font-weight: bold;
+  
 }
 
 main {
@@ -46,7 +48,7 @@ h4 {
 }
 
 body {
-  font-family: "Merriweather", system-ui;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .box {
@@ -136,6 +138,7 @@ body {
 .jolly {
   color: rgb(0, 0, 0);
   animation: jolly 5s linear infinite;
+  font-family: 'Major Mono Display', monospace;
 }
 
 @keyframes jolly {
