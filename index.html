@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
 
-    <script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
     <link rel="shortcut icon" href="images/profile.png" type="image/x-icon" />
     <title>Home • Aditya Priyadarshi</title>
   </head>
@@ -57,11 +57,15 @@
       <ul>
         <a href="/contact">~/contact</a>
       </ul>
+      <ul>
+        <a type="button" id="yay" onclick="pop_conf()">$./yay</a>
+      </ul>
     </header>
     <hr />
     <main>
       <section>
         <div class="container">
+          <h2 id="banner"></h2>
           <div class="flex">
             <figure>
               <img
@@ -180,6 +184,7 @@
         </footer>
       </div>
     </section>
-    <script src="script.js"></script>
+    <script src="/confetti.min.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

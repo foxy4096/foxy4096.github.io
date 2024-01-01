@@ -1,92 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- META OG TAGS STARTS -->
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="Website" />
-    <meta
-      property="og:image"
-      content="https://foxy4096.is-a.dev/images/socialcard.png"
-    />
-    <meta property="og:url" content="https://foxy4096.is-a.dev/contact" />
-    <meta
-      property="og:title"
-      content="Contact / Aditya Priyadarshi (@foxy4096)"
-    />
-    <meta
-      property="og:description"
-      content="A Dumb Web Developer Who Loves Django."
-    />
-    <meta
-      property="article:publisher"
-      content="https://www.foxy4096.is-a.dev"
-    />
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:image"
-      content="https://foxy4096.is-a.dev/images/socialcard.png"
-    />
-    <meta property="twitter:url" content="https://foxy4096.is-a.dev/contact" />
-    <meta
-      property="twitter:title"
-      content="Contact / Aditya Priyadarshi (@foxy4096)"
-    />
-    <meta
-      property="twitter:description"
-      content="A Dumb Web Developer Who Loves Django."
-    />
-    <meta property="twitter:site" content="@foxy4096" />
-    <!-- META OG TAGS ENDS -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
-    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
 
-    <link
-      rel="shortcut icon"
-      href="../images/profile.png"
-      type="image/x-icon"
-    />
-    <title>Contact • Aditya Priyadarshi</title>
-  </head>
+<head>
+  <!-- META OG TAGS STARTS -->
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="Website" />
+  <meta property="og:image" content="https://foxy4096.is-a.dev/images/socialcard.png" />
+  <meta property="og:url" content="https://foxy4096.is-a.dev/contact" />
+  <meta property="og:title" content="Contact / Aditya Priyadarshi (@foxy4096)" />
+  <meta property="og:description" content="A Dumb Web Developer Who Loves Django." />
+  <meta property="article:publisher" content="https://www.foxy4096.is-a.dev" />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:image" content="https://foxy4096.is-a.dev/images/socialcard.png" />
+  <meta property="twitter:url" content="https://foxy4096.is-a.dev/contact" />
+  <meta property="twitter:title" content="Contact / Aditya Priyadarshi (@foxy4096)" />
+  <meta property="twitter:description" content="A Dumb Web Developer Who Loves Django." />
+  <meta property="twitter:site" content="@foxy4096" />
+  <!-- META OG TAGS ENDS -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://unpkg.com/htmx.org@1.8.4"></script>
 
-  <body hx-boost="true" id="body">
-    <header class="flex">
-      <ul>
-        <a href="/">~/home</a>
-      </ul>
-      <ul>
-        <a href="/blog">~/blog</a>
-      </ul>
-      <ul>
-        <strong>~/contact</strong>
-      </ul>
-    </header>
-    <hr />
-    <main>
-      <section>
-        <div class="container">
-          <h4>Contact Me</h4>
-          <p>
-            For enquiries, reach out
-            <a href="https://twitter.com/foxy4096">@foxy4096</a>
-          </p>
-          <h2>or</h2>
-          <p>
-            Email me at
-            <a href="mailto:aditaypriyadarshi669@gmail.com"
-              >adityapriyadarshi669@gmail.com</a
-            >.
-          </p>
-          Peace ✌
-        </div>
-      </section>
-    </main>
-    <hr />
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="script.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <link rel="shortcut icon" href="../images/profile.png" type="image/x-icon" />
+  <title>Contact • Aditya Priyadarshi</title>
+</head>
+
+<body hx-boost="true" id="body">
+  <header class="flex">
+    <ul>
+      <a href="/">~/home</a>
+    </ul>
+    <ul>
+      <a href="/blog">~/blog</a>
+    </ul>
+    <ul>
+      <strong>~/contact</strong>
+    </ul>
+    <ul>
+      <a type="button" id="yay" onclick="pop_conf()">$./yay</a>
+    </ul>
+  </header>
+  <hr />
+  <main>
+    <section>
+      <div class="container">
+        <h2 id="banner"></h2>
+
+        <h4>Contact Me</h4>
+        <p>
+          For enquiries, reach out
+          <a href="https://twitter.com/foxy4096">@foxy4096</a>
+        </p>
+        <h2>or</h2>
+        <p>
+          Email me at
+          <a href="mailto:aditaypriyadarshi669@gmail.com">adityapriyadarshi669@gmail.com</a>.
+        </p>
+        Peace ✌
+      </div>
+    </section>
+  </main>
+  <hr />
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script src="../confetti.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
 </html>
