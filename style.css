@@ -53,16 +53,21 @@ body {
   text-align: center;
   border: 3px solid rgb(219, 219, 219);
   padding: 9px;
-  width: 400px;
+  width: 100%;
   height: 200px;
-  border-radius: 20px;
   position: relative;
+  border-radius: 10px;
 }
-
+@media only screen and (min-width: 768px) {
+  .box {
+    width: 400px;
+  }
+}
 .button {
   all: unset;
   color: aliceblue;
   background: #ff8564;
+  border-radius: 3px;
   padding: 1em 2em;
   margin-top: 5px;
   margin-left: 20px;
@@ -72,27 +77,33 @@ body {
   margin-right: 20px;
   transition: all ease-in 0.1s;
   transition: transform ease 0.2s, box-shadow ease 0.2s;
-  border-radius: 6px;
+  border-bottom: 6px #bb634b solid;
 }
-
 .secondary {
   all: unset;
+  border-bottom: 6px #000000 solid;
   color: aliceblue;
-  background: #080708;
+  background: #1f1f1f;
   padding: 1em 2em;
   margin-top: 5px;
   margin-left: 20px;
+  border-radius: 3px;
   font-size: 18px;
   display: inline-block;
   cursor: pointer;
   margin-right: 20px;
   transition: all ease-in 0.1s;
   transition: transform ease 0.2s, box-shadow ease 0.2s;
-  border-radius: 6px;
 }
 
 .secondary.hover_green:hover {
   transform: translate(0, -3px);
+}
+.button:active {
+  border: none;
+}
+.secondary:active {
+  border: none;
 }
 
 .button.hover_orange:hover {
@@ -127,11 +138,6 @@ body {
   row-gap: 10px;
 }
 
-.profile-img {
-  height: 100%;
-  border-radius: 100%;
-  border: 3px solid #ff8564;
-}
 
 .jolly {
   color: rgb(0, 0, 0);
@@ -187,4 +193,14 @@ input {
 
 img {
   border-radius: 10px;
+}
+
+.profile-img {
+  height: 100%;
+  border-radius: 100%;
+  border-width: 3px;
+  border-style: solid;
+  width: 230px;
+  animation: jolly 5s linear infinite !important;
+
 }
