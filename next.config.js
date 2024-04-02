@@ -4,6 +4,7 @@ const nextConfig = {
   output: "export",
   pageExtensions: ["js", "jsx", "mdx"],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
