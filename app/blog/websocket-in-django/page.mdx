@@ -1,0 +1,428 @@
+export const metadata = {
+  title: "Websockets in Django",
+  description: "A detailed tutorial on implementing WebSockets in Django for real-time communication.",
+  author: "foxy4096",
+  publishedOn: "Aug 6, 2023"
+}
+
+![Thumbnail](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/byw3t9r4bnsq2c5d8wch.png)
+
+# Websockets in Django
+
+
+By @{metadata.author} on {metadata.publishedOn}
+
+
+What are WebSocket?
+
+Well, they are computer communication protocol which is used to communicate bidirectionally.
+It can be used by server to send data to the client.
+
+In short, they are used for real-time communication.
+Example: Chat applications, real-time data sync in games, SSE etc.
+
+Thought WebSocket seems cool they could get too overpacked for simple apps like a weather app which polls data between few intervals.
+
+How can you implement them in Django?
+
+Well, that's easy we can use a python package called `channels`.
+They are built by the same developers who have made Django.
+
+Just open up a terminal and type the following to install the channels
+
+```powershell
+python -m pip install -U channels["daphne"]
+```
+
+It will install channels and a special ASGI web server called `daphne` which is used to handle the `ws://` protocol.
+
+We will also be needing [`django`](https://pypi.org/project/Django/) of course, just enter the following command to install it
+
+```powershell
+pip install django
+```
+
+We also might need to get redis and channel_redis
+
+```powershell
+pip install redis channel_redis
+```
+
+And also don't forget the real redis itself from [Redis](https://redis.io/)
+
+> If you are on windows, you can use [memurai](https://www.memurai.com/get-memurai)
+
+Now in this post, we will be making an Online User Presence Indicator. This app will tell the client the number of users connected to the server.
+
+Also we will not be using the [`channel_layer`](https://channels.readthedocs.io/en/stable/topics/channel_layers.html) to broadcast the message, as it will over complicate the things.
+
+Create a django application
+
+```powershell
+django-admin startproject django_websocket
+```
+
+Go to the `django_websocket` folder and type this command to create a new django app.
+
+```powershell
+cd django_websocket
+python manage.py startapp presence
+```
+
+In `settings.py` add the `daphne` server and our `presence` app.
+
+> Add `daphne` to the top.
+
+```python
+# django_websocket/settings.py
+
+INSTALLED_APPS = [
+    'daphne' # ⬅ ASGI Webserver
+    'presence', # ⬅ Our Custom App
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+Add the following lines in the `settings.py` to allow the django to also handle ASGI and also handle the login and logout redirect.
+
+```python
+# django_websocket/settings.py
+# Daphne Conf
+ASGI_APPLICATION = "django_websocket.asgi.application"
+
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
+```
+
+Now let's add some code in `asgi.py` and replace the code with this:
+
+```python
+import os
+
+from django.core.asgi import get_asgi_application
+from channels.routing import ProtocolTypeRouter # <- Add this
+from channels.auth import AuthMiddlewareStack # <- Add this
+from presence.consumers import PresenceConsumer # <- Add this
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_websockets.settings')
+
+application = ProtocolTypeRouter(
+    {
+        "http": get_asgi_application(),
+        "websocket": AuthMiddlewareStack(
+            PresenceConsumer.as_asgi()
+        ),
+    }
+)
+```
+
+Let's break it down:
+
+ - From line `1` to `6` we are importing all the required modules
+  - `os`: For setting some required environment variables
+  - `get_asgi_application`: Just handles the http side of our application.
+  - `ProtocolTypeRouter`: Allow us to handle different type of protocol interfaces, like for `http` we will just do the http things but for WebSocket protocol connections we will let our application handle with the websockets part.
+  - `AuthMiddlewareStack`: Supports standard Django authentication, where the user details are stored in the session. It allows read-only access to a user object in the `scope`.
+In short it allows us to get the current `request.user`
+  - `PresenceConsumer`: It our custom made ASGI consumer which will handle the websockets. We will be making this next
+- Line `8` is where we are adding the file is adding the project `settings.py` in an env named `DJANGO_SETTINGS_MODULE`. We don't have to worry about it.
+- From line `10` to `17` is where we are declaring the application
+It is the same `"django_websocket.asgi.application`.
+ - The application is equal to the `ProtocolTypeRouter` which takes a dictionary of protocols such as `http` and `websocket`
+ - The WebSocket is taking a function called `AuthMiddlewareStack` which takes our Consumers
+
+
+Now we get to the interesting part which is making the WebSocket consumers itself.
+
+firstly, create a file name `consumers.py` in `presence` folder, and write this code in it.
+
+```python
+import json
+
+from channels.generic.websocket import WebsocketConsumer
+
+
+class PresenceConsumer(WebsocketConsumer):
+
+    connections = []
+
+    def connect(self):
+        self.accept()
+        self.user = self.scope["user"]
+        self.connections.append(self)
+        self.update_indicator(msg="Connected")
+
+    def disconnect(self, code):
+        self.update_indicator(msg="Disconnected")
+        self.connections.remove(self)
+        return super().disconnect(code)
+
+    def update_indicator(self, msg):
+        for connection in self.connections:
+            connection.send(
+                text_data=json.dumps(
+                    {
+                        "msg": f"{self.user} {msg}",
+                        "online": f"{len(self.connections)}",
+                        "users": [f"{user.scope['user']}" for user in self.connections],                        
+                    }
+                )
+            )
+
+``` 
+
+Now this code may look intimidating, but actually it's pretty simple once you understand the basic concept of Consumers.
+
+Let's break it down.
+
+- From line 1 to 3, we are importing some important modules such as `json` and `WebsocketConsumer`.
+- From line 6 we are creating a class named `PresenceConsumer` which is extended from `WebsocketConsumer`
+    - The `WebsocketConsumer` gives us some of the methods for the WebSocket like
+        - `connect` method is called when client connects to the WebSocket. If we are overriding this method, then we have to add `self.accept()`. 
+        - `disconnect` method is called when client disconnects to the WebSocket.
+        - `receive` method is called when the client sends request to the to the WebSocket
+
+- The method named `update_indicator` is a custom method which we have created.
+
+- The `connections` is an empty list which will store the connected users.
+
+In the `connect` method, we are overriding the methods so that when a new user connects to the WebSocket, we are getting the user from the session with this code `self.user = self.scope["user"]`, as we have wrapped our `PrescenceConsumer` in `AuthMiddlewareStack`, we can get the current user from the session and save it in the `self.user`. After we got the user, we are going to append the current user connection to the `connection` and then calling the `self.update_indicator` and passing the `msg` as `connected`.
+
+Now if we look in the `update_indicator` we can see that we are looping through the `connection` list and sending the all the client a json data.
+
+Example:
+If a user named Sid connects to the WebSocket with 3 users connected all the clients connected to the WebSocket including Sid will get the following json
+```json
+{
+    "msg": "Sid Connected",
+    "online": 4,
+    "users" [
+                "user1",
+                "user2",
+                "user3",
+                "Sid"
+            ]
+}
+```
+
+Now we will handle some of our views for displaying the index page and login page. Just add this 4 lines of code and you are done
+
+```python
+from django.shortcuts import render
+
+def index(request):
+    return render(request, "index.html")
+```
+
+Yup that's it.
+
+Now we will handle the routing of the WebSocket.
+
+This is just like url mapping your views in a typical django app.
+
+Now mostly in a very large scale applications we should just seperate the views routing and ws routing, but here to save time we are just going to write it in the `urls.py`
+
+ - Firstly create a `urls.py` file in the `presence` app and add the following code.
+
+```python
+from django.urls import path
+
+from . import consumers
+from . import views
+from django.contrib.auth.views import LoginView, LogoutView
+
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path("ws/presence", consumers.PresenceConsumer.as_asgi()),
+]
+
+```
+
+Here we are creating an URL mapping for our views and WebSocket.
+As you can see, we are also using the django authentication views to get login and logout functionality in our app.
+
+To add the WS Consumer we just need to map it in the `urlpatterns` just like any other class based views, just instead of `.as_view()`, here we write `.as_asgi()`.
+
+
+*Phew!* That was the backend part, now we need to setup our frontend part.
+
+**Now Let's Get to the frontend part**
+
+- Create a `template` directory in the `presence` app and create two files named `index.html` and `login.html`
+
+In the `index.html` write the following code.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Online Presence Indicator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+
+          {% if user.is_authenticated %}
+          Hello <strong>{{ user }}</strong>
+          <br>
+          <a href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          {% endif %}
+          <h1 class="title">Online Presence Indicator</h1>
+          <div id="presence"><span class="tag is-success" id="pre_cnt">0</span> users online</div>
+          <ul id="messages"></ul>
+        </div>
+        <div class="column">
+          <div class="box">
+            <h1 class="title">Online Users</h1>
+            <div id="online-users"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const ws = new WebSocket('ws://localhost:8000/ws/presence/');
+    const presenceEl = document.getElementById('pre_cnt');
+    const messagesEl = document.getElementById('messages');
+    const onlineUsers = document.querySelector("#online-users");
+
+    ws.onmessage = (event) => {
+      onlineUsers.innerHTML = "";
+      let data = JSON.parse(event.data)
+      presenceEl.innerHTML = data.online;
+      const li1 = document.createElement('li');
+      li1.innerHTML = data.msg;
+      messagesEl.appendChild(li1);
+      data.users.forEach(user => {
+        const li2 = document.createElement("li");
+        li2.classList.add("on-us")
+        li2.innerHTML = user;
+        onlineUsers.appendChild(li2);
+      });
+
+    };
+  </script>
+</body>
+
+</html>
+```
+
+Here we are using [Bulma](https://bulma.io/) to style our page, you can use your own stylesheet if you want.
+
+The main thing we have to look here is the javascript.
+
+- Firstly we are creating a `WebSocket` object and passing the WebSocket url.
+- Next we are storing the html elements by using `getElementById`.
+- Then we are `WebSocket.onmessage` event handle to real-time messages from the server. The `event` contains a `data` attribute, to which we will use `JSON.parse` to convert the coming JSON to object
+- When the WebSocket receives the message from the serve we will show that the user is connected in the `#messages` div and append the user in `#online-users` div.
+
+Now let's just quickly create our login page.
+Open `login.html` and write this html.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Online Presence Indicator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <section class="section">
+        <h1 class="title">Login</h1>
+      <form action="." method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <br>
+        <button class="button">Login</button>
+      </form>
+    </section>
+  </div>
+</body>
+
+</html>
+```
+
+Just that's it and now our application is complete.
+
+Let's setup the database by running the migrations
+
+```powershell
+python manage.py migrate
+```
+
+Let's now test it by running the server
+
+```powershell
+python manage.py runserver
+```
+
+You should see the following stream.
+```powershell
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2023 - 22:54:21
+Django version 4.2.1, using settings 'myproject.settings'
+Starting ASGI/Daphne version 4.0.0 development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+```
+
+We can see that Django is using ASGI/Daphne server to run this Website.
+
+Now open up http://localhost:8000 and you should see the following page.
+
+
+![Index Page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8091ksrvwt7pqvsas23e.jpeg)
+*Index page with unauthenticated user*
+
+You will see that message box will have written `AnonymousUser Connected`
+
+Let's create an account and test it.
+
+```powershell
+python manage.py createsuperuser
+```
+
+Now that we have created the superuser, let's login with this account and see.
+
+![Login Page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2fbywyulkpzlaxna0yyp.jpeg)
+*Login Page*
+
+
+![Index page with authenticated user](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ck9pgao44asbe7tquale.jpeg)
+*Index page with authenticated user*
+
+Now open up a private page and open the both page in split view
+
+
+![Split Screen](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2bfem727zb776j2aujpu.png)
+
+Demo Video
+
+Here is the GitHub link for the Source Code of this app: https://github.com/foxy4096/django_websocket_demo
+
+So that's for it guys.
+
+*Cheers ✌*
