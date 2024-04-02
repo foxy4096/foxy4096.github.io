@@ -1,7 +1,5 @@
-const withMDX = require('@next/mdx')()
+const withMDX = require('@next/mdx')();
 
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
   pageExtensions: ["js", "jsx", "mdx"],
@@ -15,4 +13,9 @@ const nextConfig = {
   },
 };
 
-module.exports = withMDX(nextConfig);
+try {
+  module.exports = withMDX(nextConfig);
+} catch (error) {
+  console.error('Error in next.config.js:', error);
+  throw new Error('Error in next.config.js');
+}
