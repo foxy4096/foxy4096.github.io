@@ -30,18 +30,22 @@
 </head>
 
 <body hx-boost="true" id="body">
-  <header class="flex">
+  <header class="flex-no-center navbar">
     <ul>
-      <a href="/">~/home</a>
-    </ul>
-    <ul>
-      <strong>~/blog</strong>
-    </ul>
-    <ul>
-      <a href="/contact">~/contact</a>
-    </ul>
-    <ul>
-      <a type="button" id="yay" onclick="pop_conf()">$./yay</a>
+      <li>
+      <a href="/">
+        <img src="https://github.com/foxy4096.png" alt="Nav Img" class="nav-img" width="25" alt="Profile Picture" />
+          ~/home 🏡</a>
+      </li>
+      <li>
+        <a href="/stuff" hx-boost="false">~/stuff 📦</a>
+      </li>
+      <li>
+        <a href="/contact">~/contact 📱</a>
+      </li>
+      <li>
+        <a type="button" id="yay" onclick="pop_conf()">$./yay 🎉</a>
+      </li>
     </ul>
   </header>
   <main>

@@ -29,18 +29,22 @@
 </head>
 
 <body hx-boost="true" id="body">
-  <header class="flex-no-center">
+  <header class="flex-no-center navbar">
     <ul>
-      <strong>~/home</strong>
-    </ul>
-    <ul>
-      <a href="/blog">~/blog</a>
-    </ul>
-    <ul>
-      <a href="/contact">~/contact</a>
-    </ul>
-    <ul>
-      <a type="button" id="yay" onclick="pop_conf()">$./yay</a>
+      <li>
+      <a href="/">
+        <!-- <img src="https://github.com/foxy4096.png" alt="Nav Img" class="nav-img" width="30" alt="Profile Picture" /> -->
+          ~/home 🏡</a>
+      </li>
+      <li>
+        <a href="/stuff" hx-boost="false">~/stuff 📦</a>
+      </li>
+      <li>
+        <a href="/contact">~/contact 📱</a>
+      </li>
+      <li>
+        <a type="button" id="yay" onclick="pop_conf()">$./yay 🎉</a>
+      </li>
     </ul>
   </header>
   <main>
@@ -72,11 +76,12 @@
   </main>
   <br />
   <section id="about">
-    <div class="container">
+    <div class="container-center">
       <h4>About Me <a href="#about">🔗</a></h4>
-      <p class="content">
-        Hello, I am A Dumb Web Developer Who Loves Django. I am also a high
-        school student, who makes stuff with <code>django</code>, or at least
+      <div class="content">
+        Hello, I am A Dumb Web Developer Who Loves Django.
+        I am also a high school student, who makes stuff with
+        <code>django</code>, or at least
         try to 😓.
         <br />
         Well nothing too fancy, I am currently learning <code>Rust 🦀</code>.
@@ -86,18 +91,25 @@
         <code>Javascript 🌎</code>, little bit <code>CSS ✨</code>,
         <code>Java 💀</code>, <code>C# 🎮</code>.
         <br />
+        <br />
         <small title="Yes it's sucks very much">Not gonna lie <code>java</code> sucks</small>
         <br />
         <br />
         I currently work at
         <a href="https://ripledd.com/center/" target="_blank">@Ripledd</a> and
         at <a href="https://visualway.xyz" target="_blank">@Visualway</a>.
-      </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <code><a href="https://linktr.ee/foxy4096" target="_blank">🔗 http://linktr.ee/foxy4096 🌳</a></code>
+      </div>
     </div>
   </section>
   <br />
   <section id="work">
-    <div class="container">
+    <div class="container-center">
       <h4>My Work <a href="#work">🔗</a></h4>
       Well here are some on my projects that I have made.
       <br />
@@ -136,22 +148,21 @@
       </div>
 
       <br />
-
-      <footer>
-        <a href="#">Go to top 👆</a>
-        <br />
-        <br />
-        I have made this site with pure HTML, CSS and Javascript 😌
-        <br />
-        <br />
-
-        Copyright ©
-
-        <span x-text="new Date().getFullYear()"></span>
-      </footer>
-    </div>
   </section>
-  <script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
+
+  <footer>
+    <a href="#">Go to top 👆</a>
+    <br />
+    <br />
+    I have made this site with pure HTML, CSS and Javascript 😌
+    <br />
+    <br />
+
+    Copyright ©
+
+    <span id="current-year"></span>
+  </footer>
+  </div>
   <script src="/confetti.min.js"></script>
   <script src="/script.js"></script>
 </body>

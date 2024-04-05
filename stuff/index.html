@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- META OG TAGS STARTS -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="Website" />
+    <meta property="og:image" content="https://foxy4096.is-a.dev/images/socialcard.png" />
+    <meta property="og:url" content="https://foxy4096.is-a.dev/stuff" />
+    <meta property="og:title" content="Stuff / @foxy4096" />
+    <meta property="og:description" content="A Dumb Web Developer Who Loves Django." />
+    <meta property="article:publisher" content="https://www.foxy4096.is-a.dev" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="https://foxy4096.is-a.dev/images/socialcard.png" />
+    <meta property="twitter:url" content="https://foxy4096.is-a.dev/stuff" />
+    <meta property="twitter:title" content="Stuff / @foxy4096" />
+    <meta property="twitter:description" content="A Dumb Web Developer Who Loves Django." />
+    <meta property="twitter:site" content="@foxy4096" />
+    <!-- META OG TAGS ENDS -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="gist.css" />
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+
+    <title>Stuff • @foxy4096</title>
+</head>
+
+<body hx-boost="true" id="body">
+    <header class="flex-no-center navbar">
+        <ul>
+            <li>
+                <a href="/">
+                    <img src="https://github.com/foxy4096.png" alt="Nav Img" class="nav-img" width="25"
+                        alt="Profile Picture" />
+                    ~/home 🏡</a>
+            </li>
+            <li>
+                <a href="/stuff" hx-boost="false">~/stuff 📦</a>
+            </li>
+            <li>
+                <a href="/contact">~/contact 📱</a>
+            </li>
+            <li>
+                <a type="button" id="yay" onclick="pop_conf()">$./yay 🎉</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <h2 id="banner"></h2>
+                <h4>Stuffs 📦</h4>
+                <small>
+                    <p>Yes <a href="https://htmx.org/docs/#boosting"><code>hx-boost</code></a> is off for this page</p>
+                </small>
+                <br>
+                <a href="https://linktr.ee/foxy4096" target="_blank">🔗 http://linktr.ee/foxy4096 🌳</a>
+                <div class="stuff">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_s_UgMYyDQQ?si=WdHUY_WPIRH5LcQw"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CbXb5aDTcA?si=7KbnxEVctn6LHb_J"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/gdEakgLLHeI?si=AXISpvWoRJfE4gX1"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/6VFGimOKaOg?si=K_bOCZbQfBGOyqsZ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <script src="https://gist.github.com/foxy4096/66148571320ea693a8596d9754405d9a.js"></script>
+                </div>
+                Peace ✌
+            </div>
+        </section>
+    </main>
+    <hr />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="../confetti.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>

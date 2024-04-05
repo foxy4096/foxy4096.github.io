@@ -9,6 +9,7 @@ html {
 body {
   background-color: #121112;
   color: #ffffff;
+  margin: 0%;
 }
 
 @media (prefers-color-scheme: light) {
@@ -21,8 +22,8 @@ body {
 a {
   color: #ff8564;
   text-decoration: none;
-  border-bottom: 1px dashed;
-  font-weight: bold;
+  /* border-bottom: 1px dashed; */
+  font-weight: bold !important;
 }
 
 main {
@@ -30,15 +31,49 @@ main {
 }
 
 header > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2em;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+header > ul > li {
+  list-style: none;
+}
+
+a {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+}
+
+header > ul > li > a {
+  padding: 10px 10px;
+  border-radius: 40px;
+  border: 2px solid #fafafa;
+  background: #252525;
+  box-shadow: 2px 2px #fafafa;
+  margin: auto;
   cursor: pointer;
 }
 
-.container {
-  padding: 10px;
+.container-left {
+  padding-left: 10px;
+}
+
+.container-right {
+  text-align: right;
+  padding-right: 10px;
+}
+.container-center {
+  text-align: center;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 
 h4 {
@@ -46,7 +81,14 @@ h4 {
 }
 
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Mono", monospace !important;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
 }
 
 .box {
@@ -130,6 +172,15 @@ body {
   align-content: flex-start;
   justify-content: center;
 }
+.flex-no-center-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 20px;
+  align-content: flex-start;
+  justify-content: right;
+}
 
 .grid {
   display: grid;
@@ -137,7 +188,6 @@ body {
   column-gap: 1px;
   row-gap: 10px;
 }
-
 
 .jolly {
   color: rgb(0, 0, 0);
@@ -202,5 +252,45 @@ img {
   border-style: solid;
   width: 230px;
   animation: jolly 5s linear infinite !important;
+}
 
+footer {
+  margin: 10px;
+}
+
+.nav-img {
+  border-radius: 100%;
+}
+
+.flex-stuff {
+  margin: 50px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.flex-stuff > * {
+  display: flex;
+  gap: 20px;
+  overflow: auto;
+}
+pre,
+code {
+  text-align: left;
+}
+
+code {
+  background: #342352;
+  color: rgb(255, 191, 95);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.stuff {
+  padding: 30px;
+}
+
+.links {
+  text-align: left;
+  width: min-content;
 }
