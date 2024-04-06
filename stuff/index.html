@@ -30,10 +30,24 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 
     <style>
-        .img-grid> *{
+        .img-grid>* {
+            gap: 20px;
             width: 400px;
             object-fit: cover;
             height: 400px;
+            filter: grayscale();
+        }
+
+        .img-grid>*:hover {
+            transition: all ease 0.2s, height ease 5s;
+            filter: none;
+        }
+        
+        .img-grid {
+            gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
     </style>
     <title>Stuff • @foxy4096</title>
@@ -84,12 +98,15 @@
                             alt="cry about it" loading="lazy">
                         <img src="/meowskulls/download (3).jfif" alt="mewoskulls-5" loading="lazy">
                         <img src="/meowskulls/download.jfif" alt="mewoskulls-6" loading="lazy">
-                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/exo.png" alt="exo planet" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/exo.png" alt="exo planet"
+                            loading="lazy">
                         <img src="/meowskulls/Lock on Twitter.jfif" alt="mewoskulls-7" loading="lazy">
                         <img src="/meowskulls/Meowskulls vibin in mega city.jfif" alt="mewoskulls-8" loading="lazy">
                         <img src="https://github.com/foxy4096.png" alt="mewoskulls-8" loading="lazy">
-                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/retro.png" alt="retro" loading="lazy">
-                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/earth.png" alt="earth" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/retro.png" alt="retro"
+                            loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/earth.png" alt="earth"
+                            loading="lazy">
                     </div>
                     <br>
                     <div class="youtube-video-container">
