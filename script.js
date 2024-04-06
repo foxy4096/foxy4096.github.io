@@ -1,7 +1,7 @@
 
 document.querySelector(
   "#banner"
-).innerHTML = `<a class="block href="https://hyperstar.vercel.app" target="_blank"><code class="jolly-bg">Hyperstar 🌠</code> v1.0 released</a>`;
+).innerHTML = `<a href="https://hyperstar.vercel.app" target="_blank"><code class="jolly-bg">Hyperstar 🌠</code> v1.0 released</a>`;
 
 
 try {
