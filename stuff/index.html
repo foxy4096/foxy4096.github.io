@@ -22,16 +22,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css?_ver=24" />
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
     <link rel="stylesheet" href="gist.css" />
     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
 
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 
+    <style>
+        .img-grid> *{
+            width: 400px;
+            object-fit: cover;
+            height: 400px;
+        }
+    </style>
     <title>Stuff • @foxy4096</title>
 </head>
 
 <body hx-boost="true" id="body">
-    <header class="flex-no-center navbar">
+    <header class="nav navbar">
         <ul>
             <li>
                 <a href="/">
@@ -53,7 +62,7 @@
     <main>
         <section>
             <div class="container">
-                <h2 id="banner"></h2>
+                <p id="banner"></p>
                 <h4>Stuffs 📦</h4>
                 <small>
                     <p>Yes <a href="https://htmx.org/docs/#boosting"><code>hx-boost</code></a> is off for this page</p>
@@ -61,6 +70,28 @@
                 <br>
                 <a href="https://linktr.ee/foxy4096" target="_blank">🔗 http://linktr.ee/foxy4096 🌳</a>
                 <div class="stuff">
+                    <div class="img-grid" data-masonry='{ "itemSelector": img" }'>
+
+                        <img src="https://c.tenor.com/AO2ya1VllsQAAAAC/tenor.gif" alt="mewoskulls-1" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/uranus.png" alt="uranus"
+                            width="500">
+                        <img src="https://c.tenor.com/oR1MH6kj1GcAAAAC/tenor.gif" alt="mewoskulls-2">
+                        <img src="/meowskulls/download (1).jfif" alt="mewoskulls-3" loading="lazy">
+                        <img src="/meowskulls/download (2).jfif" alt="mewoskulls-4" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/a2864a907ef67662696a2e7fec8b1799.jpg"
+                            alt="cat" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/RDT_20230930_2238202480892624954846874.jpg"
+                            alt="cry about it" loading="lazy">
+                        <img src="/meowskulls/download (3).jfif" alt="mewoskulls-5" loading="lazy">
+                        <img src="/meowskulls/download.jfif" alt="mewoskulls-6" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/exo.png" alt="exo planet" loading="lazy">
+                        <img src="/meowskulls/Lock on Twitter.jfif" alt="mewoskulls-7" loading="lazy">
+                        <img src="/meowskulls/Meowskulls vibin in mega city.jfif" alt="mewoskulls-8" loading="lazy">
+                        <img src="https://github.com/foxy4096.png" alt="mewoskulls-8" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/retro.png" alt="retro" loading="lazy">
+                        <img src="https://vitary.pythonanywhere.com/media/uploads/images/earth.png" alt="earth" loading="lazy">
+                    </div>
+                    <br>
                     <div class="youtube-video-container">
 
                         <iframe width="560" height="315"
@@ -95,11 +126,10 @@
                     </div>
                     <script src="https://gist.github.com/foxy4096/66148571320ea693a8596d9754405d9a.js"></script>
                 </div>
-                Peace ✌
+                Peace ✌ <span id="current-year"></span>
             </div>
         </section>
     </main>
-    <hr />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="../confetti.min.js"></script>
     <script src="../script.js"></script>

@@ -60,8 +60,9 @@ header > ul > li > a {
   cursor: pointer;
 }
 
-.container-left {
-  padding-left: 10px;
+.container {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .container-right {
@@ -163,7 +164,7 @@ body {
   align-content: flex-end;
 }
 
-.flex-no-center {
+.nav {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -171,6 +172,15 @@ body {
   gap: 20px;
   align-content: flex-start;
   justify-content: center;
+}
+.flex-no-center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 20px;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 .flex-no-center-right {
   display: flex;
@@ -193,6 +203,10 @@ body {
   color: rgb(0, 0, 0);
   animation: jolly 5s linear infinite;
   font-family: "Major Mono Display", monospace;
+}
+
+.jolly-bg {
+  animation: jolly-box 5s linear infinite;
 }
 
 @keyframes jolly {
@@ -295,7 +309,6 @@ code {
   width: min-content;
 }
 
-
 .youtube-video-container {
   position: relative;
   overflow: hidden;
@@ -314,4 +327,12 @@ code {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.block {
+  margin-bottom: 1.5rem;
+}
+
+.content{
+  text-wrap: balance;
 }

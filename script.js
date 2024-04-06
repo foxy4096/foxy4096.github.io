@@ -1,3 +1,9 @@
+
+document.querySelector(
+  "#banner"
+).innerHTML = `<a class="block href="https://hyperstar.vercel.app" target="_blank"><code class="jolly-bg">Hyperstar 🌠</code> v1.0 released</a>`;
+
+
 try {
   let confetti = null;
 
@@ -16,8 +22,8 @@ try {
     ).innerHTML = `Happy New Year <u>${today.getFullYear()}</u> 🎉`;
     pop_conf();
   }
+  document.querySelector("#current-year").innerHTML = new Date().getFullYear();
 } catch {
   console.log("Never Gonna Give You Up....");
 }
 
-document.querySelector("#current-year").innerHTML = new Date().getFullYear();
