@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 html {
   all: unset;
   scroll-behavior: smooth;
@@ -82,7 +82,7 @@ h4 {
 }
 
 body {
-  font-family: "Roboto Mono", monospace !important;
+  font-family: "DM Mono", monospace !important;
 }
 
 .text-center {
@@ -301,6 +301,7 @@ code {
 }
 
 .stuff {
+  overflow: auto;
   padding: 30px;
 }
 
@@ -346,3 +347,4 @@ code {
 .content {
   text-wrap: balance;
 }
+
