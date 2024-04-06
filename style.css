@@ -312,7 +312,17 @@ code {
 .youtube-video-container {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 40%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  /* simple shadow */
+  box-shadow: 6px 6px 12px #000000;
+}
+.flex-youtube {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .youtube-video-container::after {
@@ -333,6 +343,6 @@ code {
   margin-bottom: 1.5rem;
 }
 
-.content{
+.content {
   text-wrap: balance;
 }
