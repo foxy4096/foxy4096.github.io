@@ -129,14 +129,16 @@
         <section>
             <div style="padding: 0%">
                 <p id="banner"></p>
-                <h4 style="animation: lights 5s 750ms linear infinite;">Stuffs 📦</h4>
+                <!-- Click the box emoji -->
+                <h4 style="animation: lights 5s 750ms linear infinite;">Stuffs <span
+                        onclick="itsJustAPrankBro()">📦</span></h4>
                 <small>
                     <p>Yes <a href="https://htmx.org/docs/#boosting"><code>hx-boost</code></a> is off for this page</p>
                 </small>
                 <br>
                 <div id="#yum">
-
                     <a href="https://linktr.ee/foxy4096" target="_blank">🔗 http://linktr.ee/foxy4096 🌳</a>
+
                     <p><b>Some of these stuff are mine and some aren't</b></p>
                     <div class="stuff">
                         <div class="img-grid" data-masonry='{ "itemSelector": img" }'>
@@ -207,6 +209,16 @@
             </div>
         </section>
     </main>
+    <script>
+        let hehe = new Audio('./hehe.mp3');
+        function itsJustAPrankBro(e) {
+            if (hehe.paused) {
+                hehe.play();
+            } else {
+                hehe.pause();
+            }
+        }
+    </script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="../confetti.min.js"></script>
     <script src="../script.js"></script>
