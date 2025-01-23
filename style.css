@@ -180,7 +180,7 @@ body {
   align-items: stretch;
   gap: 20px;
   align-content: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .flex-no-center-right {
   display: flex;
